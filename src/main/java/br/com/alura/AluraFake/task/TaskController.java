@@ -24,7 +24,7 @@ public class TaskController {
             return ResponseEntity.ok().build();
         } catch (TaskExceptions ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(ex.getMessage());
+                    .body(ex.getErrorMessage());
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(ex.getMessage());
