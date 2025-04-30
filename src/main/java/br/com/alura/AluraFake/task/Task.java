@@ -25,9 +25,6 @@ public class Task {
     @ManyToOne
     private Course course;
 
-    @Deprecated
-    public Task() {}
-
     public Task(String statement, Integer taskOrder, Type type, Course course) {
         Assert.notNull(statement, "Enunciado não pode ser nulo");
         Assert.isTrue(statement.length() >= 4 && statement.length() <= 255, "Enunciado deve ter entre 4 e 255 caracteres");
