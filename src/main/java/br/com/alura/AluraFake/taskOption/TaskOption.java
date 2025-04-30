@@ -1,5 +1,6 @@
-package br.com.alura.AluraFake.task;
+package br.com.alura.AluraFake.taskOption;
 
+import br.com.alura.AluraFake.task.Task;
 import jakarta.persistence.*;
 
 

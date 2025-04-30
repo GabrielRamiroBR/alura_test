@@ -16,7 +16,7 @@ public class Task {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     private String statement;
-
+    @Column(name = "task_order")
     private Integer taskOrder;
 
     @Enumerated(EnumType.STRING)

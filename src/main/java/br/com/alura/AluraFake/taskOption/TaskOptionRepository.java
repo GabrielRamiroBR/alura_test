@@ -1,7 +1,7 @@
 package br.com.alura.AluraFake.taskOption;
 
 import br.com.alura.AluraFake.task.Task;
-import br.com.alura.AluraFake.task.TaskOption;
+import br.com.alura.AluraFake.taskOption.TaskOption;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
