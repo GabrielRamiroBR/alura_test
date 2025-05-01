@@ -26,11 +26,6 @@ public class Task {
     private Course course;
 
     public Task(String statement, Integer taskOrder, Type type, Course course) {
-        Assert.notNull(statement, "Enunciado não pode ser nulo");
-        Assert.isTrue(statement.length() >= 4 && statement.length() <= 255, "Enunciado deve ter entre 4 e 255 caracteres");
-        Assert.notNull(type, "Tipo da atividade não pode ser nulo");
-        Assert.notNull(course, "Curso não pode ser nulo");
-
         this.statement = statement;
         this.taskOrder = taskOrder;
         this.type = type;

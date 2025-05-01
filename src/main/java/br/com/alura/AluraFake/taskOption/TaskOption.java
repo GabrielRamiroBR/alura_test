@@ -5,14 +5,17 @@ import jakarta.persistence.*;
 
 
 @Entity
+@Table(name = "task_option")
 public class TaskOption {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String option;
+    @Column(name = "option_text")
+    private String optionText;
 
+    @Column(name = "is_correct")
     private boolean isCorrect;
 
     @ManyToOne
@@ -22,7 +25,7 @@ public class TaskOption {
     public TaskOption() {}
 
     public TaskOption(String option, boolean isCorrect, Task task) {
-        this.option = option;
+        this.optionText = option;
         this.isCorrect = isCorrect;
         this.task = task;
     }
@@ -31,8 +34,8 @@ public class TaskOption {
         return id;
     }
 
-    public String getOption() {
-        return option;
+    public String getOptionText() {
+        return optionText;
     }
 
     public boolean isCorrect() {

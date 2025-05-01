@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 public class NewTaskOptionDTO {
 
     @NotBlank(message = "A opção não pode ser vazia.")
-    @Size(min = 4, max = 80, message = "A opção deve ter entre 4 e 80 caracteres.")
+//    @Size(min = 4, max = 80, message = "A opção deve ter entre 4 e 80 caracteres.")
     private String option;
 
     private boolean isCorrect;

@@ -24,4 +24,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 """)
     void updateOrderForCourse(@Param("courseId") Long courseId, @Param("order") int order);
 
+    int countByCourse(Course course);
+
 }
