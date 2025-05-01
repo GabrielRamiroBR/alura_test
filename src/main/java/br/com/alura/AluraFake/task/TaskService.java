@@ -38,13 +38,14 @@ public class TaskService {
     private void validateTask(NewTaskDTO dto, Course course, Type type){
         if (type.equals(Type.OPEN_TEXT)){
 
-            if (!course.getStatus().equals(Status.BUILDING)) {
-                throw new TaskExceptions.InvalidCourseStatusException();
-            }
+            if (!course.getStatus().equals(Status.BUILDING)) throw new TaskExceptions.InvalidCourseStatusException();
 
-            if (taskRepository.existsByCourseAndStatement(course, dto.getStatement())) {
-                throw new TaskExceptions.DuplicateStatementException();
-            }
+            if (taskRepository.existsByCourseAndStatement(course, dto.getStatement())) throw new TaskExceptions.DuplicateStatementException();
+
+            if (dto.getOrder() < 0) throw new TaskExceptions.InvalidTaskOrderException();
+
+            if (dto.getStatement().length() < 4 || dto.getStatement().length() > 255) throw new TaskExceptions.InvalidStatementException();
+
         }
 
     }

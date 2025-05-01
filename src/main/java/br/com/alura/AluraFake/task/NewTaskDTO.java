@@ -11,11 +11,11 @@ public class NewTaskDTO {
     private Long courseId;
 
     @NotBlank
-    @Size(min = 4, max = 255, message = "O enunciado deve ter entre 4 e 255 caracteres.")
+//    @Size(min = 4, max = 255, message = "O enunciado deve ter entre 4 e 255 caracteres.")
     private String statement;
 
     @NotNull
-    @Positive(message = "A ordem deve ser um número inteiro positivo.")
+//    @Positive(message = "A ordem deve ser um número inteiro positivo.")
     private Integer order;
 
     // Getters e setters

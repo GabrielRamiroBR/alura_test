@@ -53,4 +53,15 @@ public abstract class TaskExceptions extends RuntimeException {
             return new ErrorMessage("statement", getMessage());
         }
     }
+
+    public static class InvalidStatementException extends TaskExceptions {
+        public InvalidStatementException() {
+            super("O enunciado deve ter entre 4 e 255 caracteres.");
+        }
+
+        @Override
+        public ErrorMessage getErrorMessage() {
+            return new ErrorMessage("order", getMessage());
+        }
+    }
 }
