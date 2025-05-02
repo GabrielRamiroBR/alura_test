@@ -48,8 +48,17 @@ public class TaskController {
     }
 
     @PostMapping("/task/new/multiplechoice")
-    public ResponseEntity newMultipleChoice() {
-        return ResponseEntity.ok().build();
+    public ResponseEntity newMultipleChoice(@RequestBody NewTaskDTO dto){
+        try {
+            return ResponseEntity.ok(taskService.createMultipleChoiceTask(dto));
+        } catch (TaskExceptions ex) {
+            return ResponseEntity.badRequest().body(ex.getErrorMessage());
+        } catch (TaskOptionExceptions ex) {
+            return ResponseEntity.badRequest().body(ex.getErrorMessage());
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ErrorMessage(null, ex.getMessage()));
+        }
     }
 
 }

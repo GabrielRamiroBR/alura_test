@@ -24,7 +24,7 @@ public abstract class TaskOptionExceptions extends RuntimeException {
 
     public static class InvalidCorrectOptionException extends TaskOptionExceptions {
         public InvalidCorrectOptionException() {
-            super("Quantidade de alternativas corretas inválida");
+            super("Quantidade de alternativas corretas ou incorretas inválida");
         }
         @Override
         public ErrorMessage getErrorMessage() {
@@ -54,4 +54,16 @@ public abstract class TaskOptionExceptions extends RuntimeException {
             return new ErrorMessage("options", getMessage());
         }
     }
+
+    public static class OptionEqualsStatementException extends TaskOptionExceptions {
+        private String option;
+
+        public OptionEqualsStatementException() { super("Existe pelo menos uma alternativa igual ao enunciado");
+        }
+        @Override
+        public ErrorMessage getErrorMessage() {
+            return new ErrorMessage("option", getMessage());
+        }
+    }
+
 }

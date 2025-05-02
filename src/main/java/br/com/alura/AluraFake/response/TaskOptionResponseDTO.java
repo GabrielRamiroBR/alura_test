@@ -1,17 +1,17 @@
 package br.com.alura.AluraFake.response;
 
 public class TaskOptionResponseDTO {
-    private String optionText;
+    private String option;
     private boolean correct;
 
     public TaskOptionResponseDTO(String optionText, boolean correct) {
-        this.optionText = optionText;
+        this.option = optionText;
         this.correct = correct;
     }
 
     // Getters
-    public String getOptionText() {
-        return optionText;
+    public String getOption() {
+        return option;
     }
 
     public boolean isCorrect() {
