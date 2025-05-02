@@ -1,17 +1,12 @@
 package br.com.alura.AluraFake.task;
 
-import br.com.alura.AluraFake.course.CourseRepository;
-import br.com.alura.AluraFake.error.ErrorMessage;
-import br.com.alura.AluraFake.exceptions.TaskExceptions;
-import br.com.alura.AluraFake.exceptions.TaskOptionExceptions;
-import jakarta.validation.Valid;
+
+import br.com.alura.AluraFake.taskOption.TaskOptionExceptions;
+import br.com.alura.AluraFake.util.ErrorItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDateTime;
 
 @RestController
 public class TaskController {
@@ -22,13 +17,13 @@ public class TaskController {
     @PostMapping("/task/new/opentext")
     public ResponseEntity<?> newOpenTextExercise(@RequestBody NewTaskDTO dto) {
         try {
-            return ResponseEntity.ok().body(taskService.createOpenTextTask(dto));
+            return ResponseEntity.ok(taskService.createOpenTextTask(dto));
         } catch (TaskExceptions ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(ex.getErrorMessage());
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ErrorMessage(null, ex.getMessage()));
+                    .body(new ErrorItemDTO("N/A", ex.getMessage()));
         }
     }
 
@@ -42,7 +37,7 @@ public class TaskController {
             return ResponseEntity.badRequest().body(ex.getErrorMessage());
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ErrorMessage(null, ex.getMessage()));
+                    .body(new ErrorItemDTO(null, ex.getMessage()));
         }
 
     }
@@ -57,7 +52,7 @@ public class TaskController {
             return ResponseEntity.badRequest().body(ex.getErrorMessage());
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ErrorMessage(null, ex.getMessage()));
+                    .body(new ErrorItemDTO(null, ex.getMessage()));
         }
     }
 

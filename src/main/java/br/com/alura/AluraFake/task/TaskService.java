@@ -3,9 +3,7 @@ package br.com.alura.AluraFake.task;
 import br.com.alura.AluraFake.course.Course;
 import br.com.alura.AluraFake.course.CourseRepository;
 import br.com.alura.AluraFake.course.Status;
-import br.com.alura.AluraFake.exceptions.TaskExceptions;
-import br.com.alura.AluraFake.exceptions.TaskOptionExceptions;
-import br.com.alura.AluraFake.response.TaskResponseDTO;
+import br.com.alura.AluraFake.taskOption.TaskOptionExceptions;
 import br.com.alura.AluraFake.taskOption.NewTaskOptionDTO;
 import br.com.alura.AluraFake.taskOption.TaskOption;
 import br.com.alura.AluraFake.taskOption.TaskOptionRepository;
@@ -19,17 +17,19 @@ import java.util.stream.Collectors;
 @Service
 public class TaskService {
 
-    @Autowired
-    private  TaskRepository taskRepository;
-    @Autowired
-    private  CourseRepository courseRepository;
-    @Autowired
-    private TaskOptionRepository taskOptionRepository;
 
-//    public TaskService(TaskRepository taskRepository, CourseRepository courseRepository) {
-//        this.taskRepository = taskRepository;
-//        this.courseRepository = courseRepository;
-//    }
+    private final TaskRepository taskRepository;
+    private final CourseRepository courseRepository;
+    private final TaskOptionRepository taskOptionRepository;
+
+    @Autowired
+    public TaskService(TaskRepository taskRepository,
+                       CourseRepository courseRepository,
+                       TaskOptionRepository taskOptionRepository) {
+        this.taskRepository = taskRepository;
+        this.courseRepository = courseRepository;
+        this.taskOptionRepository = taskOptionRepository;
+    }
 
     @Transactional
     public TaskResponseDTO createOpenTextTask(NewTaskDTO dto) {
@@ -43,9 +43,10 @@ public class TaskService {
         Task task = new Task(dto.getStatement(), dto.getOrder(), Type.OPEN_TEXT, course);
         taskRepository.save(task);
 
-        return new TaskResponseDTO(task, null);
+        return new TaskResponseDTO(task, Collections.emptyList());
     }
 
+    @Transactional
     public TaskResponseDTO createSingleChoiceTask(NewTaskDTO dto) {
         Course course = courseRepository.findById(dto.getCourseId())
                 .orElseThrow(TaskExceptions.CourseNotFoundException::new);
@@ -65,6 +66,7 @@ public class TaskService {
         return new TaskResponseDTO(task,options);
     }
 
+    @Transactional
     public TaskResponseDTO createMultipleChoiceTask(NewTaskDTO dto) {
         Course course = courseRepository.findById(dto.getCourseId())
                 .orElseThrow(TaskExceptions.CourseNotFoundException::new);

@@ -22,6 +22,9 @@ public class CourseController {
         this.userRepository = userRepository;
     }
 
+    @Autowired
+    CourseService courseService;
+
     @Transactional
     @PostMapping("/course/new")
     public ResponseEntity createCourse(@Valid @RequestBody NewCourseDTO newCourse) {
@@ -52,7 +55,16 @@ public class CourseController {
 
     @PostMapping("/course/{id}/publish")
     public ResponseEntity createCourse(@PathVariable("id") Long id) {
-        return ResponseEntity.ok().build();
+
+        try {
+            Course course = courseService.publishCourse(id);
+            return ResponseEntity.ok(course);
+        } catch (CourseExceptions ex) {
+            return ResponseEntity.badRequest().body(ex.getErrorMessage());
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ErrorItemDTO("N/A", ex.getMessage()));
+        }
     }
 
 }

@@ -25,6 +25,10 @@ public class Task {
     @ManyToOne
     private Course course;
 
+    @Deprecated
+    public Task() {
+    }
+
     public Task(String statement, Integer taskOrder, Type type, Course course) {
         this.statement = statement;
         this.taskOrder = taskOrder;
