@@ -24,6 +24,9 @@ public class TaskResponseDTO {
                 .collect(Collectors.toList());
     }
 
+    public TaskResponseDTO() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -42,5 +45,25 @@ public class TaskResponseDTO {
 
     public List<TaskOptionResponseDTO> getOptions() {
         return options;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setStatement(String statement) {
+        this.statement = statement;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setOptions(List<TaskOptionResponseDTO> options) {
+        this.options = options;
     }
 }

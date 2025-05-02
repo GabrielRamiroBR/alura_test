@@ -25,7 +25,13 @@ public class NewTaskDTO {
     @Nullable
     private List<NewTaskOptionDTO> options;
 
-    // Getters e setters
+    public NewTaskDTO(Long courseId, String statement, Integer order, @Nullable List<NewTaskOptionDTO> options) {
+        this.courseId = courseId;
+        this.statement = statement;
+        this.order = order;
+        this.options = options;
+    }
+
 
     public Long getCourseId() {
         return courseId;
@@ -52,4 +58,7 @@ public class NewTaskDTO {
     }
 
     public List<NewTaskOptionDTO> getOptions(){ return options; }
+
+    public void setTaskOrder(int i) {
+    }
 }
