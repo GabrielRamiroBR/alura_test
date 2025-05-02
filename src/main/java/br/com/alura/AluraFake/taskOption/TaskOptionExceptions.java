@@ -1,6 +1,7 @@
-package br.com.alura.AluraFake.exceptions;
+package br.com.alura.AluraFake.taskOption;
 
-import br.com.alura.AluraFake.error.ErrorMessage;
+
+import br.com.alura.AluraFake.util.ErrorItemDTO;
 
 import java.util.List;
 
@@ -10,15 +11,15 @@ public abstract class TaskOptionExceptions extends RuntimeException {
         super(message);
     }
 
-    public abstract ErrorMessage getErrorMessage();
+    public abstract ErrorItemDTO getErrorMessage();
 
     public static class InvalidOptionsCountException extends TaskOptionExceptions {
         public InvalidOptionsCountException() {
             super("Quantidade de alternativas inválida");
         }
         @Override
-        public ErrorMessage getErrorMessage() {
-            return new ErrorMessage(null, getMessage());
+        public ErrorItemDTO getErrorMessage() {
+            return new ErrorItemDTO("N/A", getMessage());
         }
     }
 
@@ -27,8 +28,8 @@ public abstract class TaskOptionExceptions extends RuntimeException {
             super("Quantidade de alternativas corretas ou incorretas inválida");
         }
         @Override
-        public ErrorMessage getErrorMessage() {
-            return new ErrorMessage("isCorrect", getMessage());
+        public ErrorItemDTO getErrorMessage() {
+            return new ErrorItemDTO("isCorrect", getMessage());
         }
     }
 
@@ -38,8 +39,8 @@ public abstract class TaskOptionExceptions extends RuntimeException {
         public InvalidOptionLengthException(String option) { super("Tamanho de altrnativa inválido:" + option);
         }
         @Override
-        public ErrorMessage getErrorMessage() {
-            return new ErrorMessage("option", getMessage());
+        public ErrorItemDTO getErrorMessage() {
+            return new ErrorItemDTO("option", getMessage());
         }
     }
 
@@ -50,8 +51,8 @@ public abstract class TaskOptionExceptions extends RuntimeException {
         }
 
         @Override
-        public ErrorMessage getErrorMessage() {
-            return new ErrorMessage("options", getMessage());
+        public ErrorItemDTO getErrorMessage() {
+            return new ErrorItemDTO("options", getMessage());
         }
     }
 
@@ -61,8 +62,8 @@ public abstract class TaskOptionExceptions extends RuntimeException {
         public OptionEqualsStatementException() { super("Existe pelo menos uma alternativa igual ao enunciado");
         }
         @Override
-        public ErrorMessage getErrorMessage() {
-            return new ErrorMessage("option", getMessage());
+        public ErrorItemDTO getErrorMessage() {
+            return new ErrorItemDTO("option", getMessage());
         }
     }
 

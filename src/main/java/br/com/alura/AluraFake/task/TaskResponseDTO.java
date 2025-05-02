@@ -1,7 +1,8 @@
-package br.com.alura.AluraFake.response;
+package br.com.alura.AluraFake.task;
 
-import br.com.alura.AluraFake.task.Task;
 import br.com.alura.AluraFake.taskOption.TaskOption;
+import br.com.alura.AluraFake.taskOption.TaskOptionResponseDTO;
+import jakarta.annotation.Nullable;
 
 import java.util.List;
 import java.util.stream.Collectors;

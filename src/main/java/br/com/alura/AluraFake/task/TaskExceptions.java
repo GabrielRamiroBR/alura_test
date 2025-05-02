@@ -1,6 +1,7 @@
-package br.com.alura.AluraFake.exceptions;
+package br.com.alura.AluraFake.task;
 
-import br.com.alura.AluraFake.error.ErrorMessage;
+
+import br.com.alura.AluraFake.util.ErrorItemDTO;
 
 public abstract class TaskExceptions extends RuntimeException {
 
@@ -8,7 +9,7 @@ public abstract class TaskExceptions extends RuntimeException {
         super(message);
     }
 
-    public abstract ErrorMessage getErrorMessage();
+    public abstract ErrorItemDTO getErrorMessage();
 
     public static class CourseNotFoundException extends TaskExceptions {
         public CourseNotFoundException() {
@@ -16,8 +17,8 @@ public abstract class TaskExceptions extends RuntimeException {
         }
 
         @Override
-        public ErrorMessage getErrorMessage() {
-            return new ErrorMessage("courseId", getMessage());
+        public ErrorItemDTO getErrorMessage() {
+            return new ErrorItemDTO("courseId", getMessage());
         }
     }
 
@@ -27,8 +28,8 @@ public abstract class TaskExceptions extends RuntimeException {
         }
 
         @Override
-        public ErrorMessage getErrorMessage() {
-            return new ErrorMessage("course.status", getMessage());
+        public ErrorItemDTO getErrorMessage() {
+            return new ErrorItemDTO("course.status", getMessage());
         }
     }
 
@@ -38,8 +39,8 @@ public abstract class TaskExceptions extends RuntimeException {
         }
 
         @Override
-        public ErrorMessage getErrorMessage() {
-            return new ErrorMessage("order", getMessage());
+        public ErrorItemDTO getErrorMessage() {
+            return new ErrorItemDTO("order", getMessage());
         }
     }
 
@@ -49,8 +50,8 @@ public abstract class TaskExceptions extends RuntimeException {
         }
 
         @Override
-        public ErrorMessage getErrorMessage() {
-            return new ErrorMessage("statement", getMessage());
+        public ErrorItemDTO getErrorMessage() {
+            return new ErrorItemDTO("statement", getMessage());
         }
     }
 
@@ -60,8 +61,8 @@ public abstract class TaskExceptions extends RuntimeException {
         }
 
         @Override
-        public ErrorMessage getErrorMessage() {
-            return new ErrorMessage("order", getMessage());
+        public ErrorItemDTO getErrorMessage() {
+            return new ErrorItemDTO("order", getMessage());
         }
     }
 }

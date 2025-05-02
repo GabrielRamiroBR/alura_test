@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.response;
+package br.com.alura.AluraFake.taskOption;
 
 public class TaskOptionResponseDTO {
     private String option;
