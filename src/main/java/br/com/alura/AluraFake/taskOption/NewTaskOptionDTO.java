@@ -1,7 +1,6 @@
 package br.com.alura.AluraFake.taskOption;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 public class NewTaskOptionDTO {
 
@@ -11,6 +10,11 @@ public class NewTaskOptionDTO {
 
     private boolean isCorrect;
 
+    public NewTaskOptionDTO(String option, boolean isCorrect) {
+        this.option = option;
+        this.isCorrect = isCorrect;
+    }
+
     public String getOption() {
         return option;
     }
@@ -19,7 +23,7 @@ public class NewTaskOptionDTO {
         this.option = option;
     }
 
-    public boolean isCorrect() {
+    public boolean getIsCorrect() {
         return isCorrect;
     }
 

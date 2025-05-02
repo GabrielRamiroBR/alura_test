@@ -120,7 +120,7 @@ public class TaskService {
 
     private void createTaskOptions(Task task, List<NewTaskOptionDTO> options) {
         List<TaskOption> taskOptions = options.stream()
-                .map(o -> new TaskOption(o.getOption(), o.isCorrect(), task))
+                .map(o -> new TaskOption(o.getOption(), o.getIsCorrect(), task))
                 .collect(Collectors.toList());
         taskOptionRepository.saveAll(taskOptions);
     }
@@ -166,7 +166,7 @@ public class TaskService {
     }
 
     private void validateCorrectAndIncorrectCount(List<NewTaskOptionDTO> options, boolean singleChoice) {
-        long correctCount = options.stream().filter(NewTaskOptionDTO::isCorrect).count();
+        long correctCount = options.stream().filter(NewTaskOptionDTO::getIsCorrect).count();
 
         if (singleChoice) {
             if (correctCount != 1)

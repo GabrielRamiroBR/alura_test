@@ -19,8 +19,7 @@ public class TaskController {
         try {
             return ResponseEntity.ok(taskService.createOpenTextTask(dto));
         } catch (TaskExceptions ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(ex.getErrorMessage());
+            return ResponseEntity.badRequest().body(ex.getErrorMessage());
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new ErrorItemDTO("N/A", ex.getMessage()));
@@ -37,7 +36,7 @@ public class TaskController {
             return ResponseEntity.badRequest().body(ex.getErrorMessage());
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ErrorItemDTO(null, ex.getMessage()));
+                    .body(new ErrorItemDTO("N/A", ex.getMessage()));
         }
 
     }
@@ -52,7 +51,7 @@ public class TaskController {
             return ResponseEntity.badRequest().body(ex.getErrorMessage());
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ErrorItemDTO(null, ex.getMessage()));
+                    .body(new ErrorItemDTO("N/A", ex.getMessage()));
         }
     }
 

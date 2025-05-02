@@ -1,5 +1,6 @@
 package br.com.alura.AluraFake.task;
 
+import br.com.alura.AluraFake.taskOption.NewTaskOptionDTO;
 import br.com.alura.AluraFake.taskOption.TaskOption;
 import br.com.alura.AluraFake.taskOption.TaskOptionResponseDTO;
 import jakarta.annotation.Nullable;
@@ -11,16 +12,16 @@ public class TaskResponseDTO {
     private Long id;
     private String statement;
     private Integer order;
-    private String type;
-    private List<TaskOptionResponseDTO> options;
+    private Type type;
+    private List<NewTaskOptionDTO> options;
 
     public TaskResponseDTO(Task task, List<TaskOption> options) {
         this.id = task.getId();
         this.statement = task.getStatement();
         this.order = task.getTaskOrder();
-        this.type = task.getType().name();
+        this.type = task.getType();
         this.options = options.stream()
-                .map(option -> new TaskOptionResponseDTO(option.getOptionText(), option.isCorrect()))
+                .map(option -> new NewTaskOptionDTO(option.getOptionText(), option.isCorrect()))
                 .collect(Collectors.toList());
     }
 
@@ -39,11 +40,11 @@ public class TaskResponseDTO {
         return order;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public List<TaskOptionResponseDTO> getOptions() {
+    public List<NewTaskOptionDTO> getOptions() {
         return options;
     }
 
@@ -59,11 +60,11 @@ public class TaskResponseDTO {
         this.order = order;
     }
 
-    public void setType(String type) {
+    public void setType(Type type) {
         this.type = type;
     }
 
-    public void setOptions(List<TaskOptionResponseDTO> options) {
+    public void setOptions(List<NewTaskOptionDTO> options) {
         this.options = options;
     }
 }

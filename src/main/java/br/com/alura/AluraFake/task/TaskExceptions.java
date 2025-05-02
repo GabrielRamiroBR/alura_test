@@ -62,7 +62,7 @@ public abstract class TaskExceptions extends RuntimeException {
 
         @Override
         public ErrorItemDTO getErrorMessage() {
-            return new ErrorItemDTO("order", getMessage());
+            return new ErrorItemDTO("statement", getMessage());
         }
     }
 }
